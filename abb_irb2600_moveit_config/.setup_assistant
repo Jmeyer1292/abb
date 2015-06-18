@@ -5,4 +5,4 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/abb_irb2600.srdf
   CONFIG:
-    generated_timestamp: 1434582863
+    generated_timestamp: 1434650094
