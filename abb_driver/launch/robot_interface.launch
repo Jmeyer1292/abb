@@ -30,9 +30,18 @@
   
   <!-- motion_download_interface: sends robot motion commands by DOWNLOADING path to robot
                                   (using socket connection to robot) -->
-  <node pkg="abb_driver" type="motion_download_interface" name="motion_download_interface"/>
+  <!-- <node pkg="abb_driver" type="motion_download_interface" name="motion_download_interface"/> -->
   
-  <!-- joint_trajectory_action: provides actionlib interface for high-level robot control -->
-  <node pkg="industrial_robot_client" type="joint_trajectory_action" name="joint_trajectory_action"/>
+
+<param name="move_group/trajectory_execution/execution_duration_monitoring" value="false"/>
+
+<!--edited to test goal tolerance JMS-->
+  <node pkg="industrial_robot_client" type="joint_trajectory_action"        name="joint_trajectory_action" output="screen">
+        <param name="constraints/goal_threshold" value="0.01"/>
+    </node>
+
+  <node pkg="abb_file_suite" type="ros_abb_ftp_interface_node" name="ftp_interface">
+    <param name="controller_ip" value="$(arg robot_ip)"/>
+  </node> 
 
 </launch>
