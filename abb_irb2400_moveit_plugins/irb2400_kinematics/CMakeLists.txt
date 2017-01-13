@@ -3,6 +3,8 @@ include_directories(include)
 
 set(IKFAST_LIBRARY_NAME abb_irb2400_manipulator_moveit_ikfast_plugin)
 
+add_compile_options(-std=c++11)
+
 add_library(${IKFAST_LIBRARY_NAME} src/abb_irb2400_manipulator_ikfast_moveit_plugin.cpp)
 target_link_libraries(${IKFAST_LIBRARY_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${LAPACK_LIBRARIES})
 
